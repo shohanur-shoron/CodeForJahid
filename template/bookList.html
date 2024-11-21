@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <title>View Books</title>
+</head>
+<body>
+
+    <div class="topBtns">
+        <a href="{% url 'create_book' %}" class="btns">Add Book</a>
+        <a href="{% url 'book_list' %}" class="btns active">View Books</a>
+    </div>
+
+    <div class="viewStudent">
+        <table>
+            <thead>
+              <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                  <tr>
+                    <td>{{ book.book_name }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.isbn_number }}</td>
+                    <td><a href="{% url 'update_book' book.id %}" class="update">Edit</a><a href="{% url 'delete_book' book.id %}" class="delete">Delete</a></td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+</body>
+</html>
