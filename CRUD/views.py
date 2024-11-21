@@ -29,8 +29,8 @@ def update_book(request, pk):
 
 def delete_book(request, pk):
     try:
-        student = Book.objects.get(pk=pk)
-        student.delete()
+        book = Book.objects.get(pk=pk)
+        book.delete()
         return redirect('book_list')
     except Book.DoesNotExist:
         return redirect('book_list')
